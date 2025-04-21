@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <title>{% block title %}My Site{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> #hybridarkearth
+
+    <style>
+        body {
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+        }
+      
+        body.page-loaded {
+          opacity: 1;
+        }
+      </style>      
+
+    
 </head>
 <body>
 
@@ -21,5 +37,11 @@
     {% endblock %}
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.body.classList.add('page-loaded');
+    });
+  </script>
+  
 </body>
 </html>

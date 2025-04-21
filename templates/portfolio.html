@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block content %}
+<h1>My Work</h1>
+<div class="gallery">
+  <img src="{{ url_for('static', filename='gallery/photo1.jpg') }}" alt="Photo 1">
+  <img src="{{ url_for('static', filename='gallery/photo2.jpg') }}" alt="Photo 2">
+  <img src="{{ url_for('static', filename='gallery/photo3.jpg') }}" alt="Photo 3">
+  <img src="{{ url_for('static', filename='gallery/photo4.jpg') }}" alt="Photo 4">
+</div>
+{% endblock %}
