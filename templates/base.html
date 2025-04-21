@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> #hybridarkearth
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}"> 
+
 
     <style>
         body {
@@ -23,12 +25,14 @@
 </head>
 <body>
 
-<nav>
-    <a href="/">Home</a> 
-    <a href="/aboutme">About Me</a> 
-    <a href="/contactinfo">Contact</a> 
-    <a href="/portfolio">Portfolio</a>
-</nav>
+    <nav>
+        <a href="/"><img src="{{ url_for('static', filename='doradz-logo.png') }}" alt="Doradz Logo" style="height: 30px; vertical-align: middle;"></a>
+        <a href="/">Home</a>
+        <a href="/aboutme">About Me</a>
+        <a href="/contactinfo">Contact</a>
+        <a href="/portfolio">Portfolio</a>
+      </nav>
+      
 <hr>
 
 <div class="content">
@@ -37,11 +41,18 @@
     {% endblock %}
 </div>
 
+<footer style="text-align:center; margin-top: 50px; color: #666;">
+    <img src="{{ url_for('static', filename='doradz-logo.png') }}" alt="Doradz Logo" style="height:40px; opacity: 0.5;">
+    <p style="font-size: 0.9em;">&copy; 2025 Doradz Studio. All rights reserved.</p>
+  </footer>
+  
 <script>
     document.addEventListener("DOMContentLoaded", function() {
       document.body.classList.add('page-loaded');
     });
   </script>
   
+  
 </body>
 </html>
+
