@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Client Booking Form{% endblock %}
+
+{% block content %}
+<h1>Client Booking Form</h1>
+
+<form method="POST">
+  <label>Full Name:</label><br>
+  <input type="text" name="name" required><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" name="email" required><br><br>
+
+  <label>Type of Shoot:</label><br>
+  <select name="shoot_type" required>
+    <option value="Wedding">Wedding</option>
+    <option value="Event">Event</option>
+    <option value="Portrait">Portrait</option>
+    <option value="Studio">Studio</option>
+  </select><br><br>
+
+  <label>Date:</label><br>
+  <input type="date" name="date" required><br><br>
+
+  <label>Time:</label><br>
+  <input type="time" name="time" required><br><br>
+
+  <label>Location:</label><br>
+  <input type="text" name="location" required><br><br>
+
+  <label>Hours Needed:</label><br>
+  <input type="number" name="hours" min="1" required><br><br>
+
+  <label>Do you allow us to post your photos?</label><br>
+  <select name="permission" required>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select><br><br>
+
+  <label>Additional Notes:</label><br>
+  <textarea name="notes" rows="4"></textarea><br><br>
+
+  <button type="submit" class="btn">Submit</button>
+</form>
+{% endblock %}

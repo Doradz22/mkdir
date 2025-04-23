@@ -162,4 +162,17 @@ body {
   .btn:hover {
     background-color: #f4f1ee;
   }
+
+
+  .contact-options {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .contact-options .btn {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 16px;
+  }
+  
   

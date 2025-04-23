@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Model Collaboration Form{% endblock %}
+
+{% block content %}
+<h1>Model Collaboration Form</h1>
+
+<form method="POST">
+  <label>Full Name:</label><br>
+  <input type="text" name="name" required><br><br>
+
+  <label>Age: <small>(Must be 18+ to collaborate)</small></label><br>
+  <input type="number" name="age" required><br><br>
+
+  <label>Modeling Experience:</label><br>
+  <textarea name="experience" rows="3" placeholder="Tell us about your experience..."></textarea><br><br>
+
+  <label>Do you allow us to post your photos?</label><br>
+  <select name="permission" required>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select><br><br>
+
+  <p><strong>Note:</strong> No RAW photos will be provided. You will receive 5-10 edited photos. Photographer selects final images.</p>
+  <input type="checkbox" name="agree" required> I understand and agree.<br><br>
+
+  <label>Availability (Preferred dates/times):</label><br>
+  <textarea name="availability" rows="2"></textarea><br><br>
+
+  <button type="submit" class="btn">Submit</button>
+</form>
+{% endblock %}
