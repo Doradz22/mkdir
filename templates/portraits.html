@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Portrait Portfolio{% endblock %}
+
+{% block content %}
+<h1>Portraits Shots</h1>
+<div class="gallery">
+  <img src="{{ url_for('static', filename='gallery/studio/studio1.jpg') }}" alt="Wedding 1">
+  <img src="{{ url_for('static', filename='gallery/studio/studio2.jpg') }}" alt="Wedding 2">
+</div>
+
+<p><a href="/portfolio" class="back-link">← Back to Portfolio</a></p>
+
+{% endblock %}

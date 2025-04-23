@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}All Works - Portfolio{% endblock %}
+
+{% block content %}
+<h1>All Works</h1>
+
+<h2>Weddings</h2>
+<div class="gallery">
+  <img src="{{ url_for('static', filename='gallery/weddings/wed1.jpg') }}" alt="Wedding 1">
+  <img src="{{ url_for('static', filename='gallery/weddings/wed2.jpg') }}" alt="Wedding 2">
+</div>
+
+<h2>Portraits</h2>
+<div class="gallery">
+  <img src="{{ url_for('static', filename='gallery/portraits/port1.jpg') }}" alt="Portrait 1">
+  <img src="{{ url_for('static', filename='gallery/portraits/port2.jpg') }}" alt="Portrait 2">
+</div>
+
+<h2>Studio</h2>
+<div class="gallery">
+  <img src="{{ url_for('static', filename='gallery/studio/studio1.jpg') }}" alt="Studio 1">
+</div>
+
+<h2>Events</h2>
+<div class="gallery">
+  <img src="{{ url_for('static', filename='gallery/events/event1.jpg') }}" alt="Event 1">
+</div>
+
+<p><a href="/portfolio" class="back-link">← Back to Portfolio</a></p>
+{% endblock %}

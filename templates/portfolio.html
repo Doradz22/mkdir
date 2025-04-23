@@ -3,11 +3,17 @@
 {% block title %}Portfolio{% endblock %}
 
 {% block content %}
-<h1>My Work</h1>
-<div class="gallery">
-  <img src="{{ url_for('static', filename='gallery/photo1.jpg') }}" alt="Photo 1">
-  <img src="{{ url_for('static', filename='gallery/photo2.jpg') }}" alt="Photo 2">
-  <img src="{{ url_for('static', filename='gallery/photo3.jpg') }}" alt="Photo 3">
-  <img src="{{ url_for('static', filename='gallery/photo4.jpg') }}" alt="Photo 4">
+<h1>My Portfolio</h1>
+
+
+<div class="category-links">
+  <a href="/portfolio/all">All</a> |
+  <a href="/portfolio/weddings">Weddings</a> |
+  <a href="/portfolio/portraits">Portraits</a> |
+  <a href="/portfolio/studio">Studio</a> |
+  <a href="/portfolio/events">Events</a>
 </div>
+
+
+<p>Select a category to view my work.</p>
 {% endblock %}

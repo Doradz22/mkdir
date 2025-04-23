@@ -52,7 +52,26 @@
     });
   </script>
   
+  <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">↑</button>
   
+  <script>
+    // Show button when user scrolls down 100px
+    window.onscroll = function() {scrollFunction()};
+  
+    function scrollFunction() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        document.getElementById("scrollTopBtn").style.display = "block";
+      } else {
+        document.getElementById("scrollTopBtn").style.display = "none";
+      }
+    }
+  
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+  
+
 </body>
 </html>
 
