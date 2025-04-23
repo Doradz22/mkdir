@@ -1,12 +1,15 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-{% block title %} {% endblock %} 
+{% block title %}Welcome - Doradz Studio{% endblock %}
 
 {% block content %}
-
-<h1>Welcome to my website!</h1>
-<p>Life is a continuous process of learning</p>
-
-
+<div class="hero">
+  <img src="{{ url_for('static', filename='hero.jpg') }}" alt="Doradz Studio Hero">
+  <div class="hero-text">
+    <h1>Welcome to Doradz Studio</h1>
+    <p>Life is a continuous process of learning</p>
+    <a href="/portfolio" class="btn">View Portfolio</a>
+    <a href="/contactinfo" class="btn">Contact Me</a>
+  </div>
+</div>
 {% endblock %}
-

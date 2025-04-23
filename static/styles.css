@@ -128,3 +128,38 @@ body {
     background-color: #f4f1ee;
   }
   
+  .hero {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  
+  .hero img {
+    width: 100%;
+    height: auto;
+    filter: brightness(60%);
+  }
+  
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    background-color: #d6a85e;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #f4f1ee;
+  }
+  
