@@ -1,8 +1,28 @@
 from flask import Flask, render_template
 from flask import request
+import csv
+import os
 
 
 app = Flask(__name__)
+
+
+
+
+
+def save_to_csv(data, filename):
+    file_exists = os.path.isfile(filename)
+
+    with open(filename, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            writer.writerow(data.keys())  # Write header once
+        writer.writerow(data.values())
+
+
+
+
+
 
 @app.route('/')
 def index():
@@ -25,44 +45,45 @@ def contactinfo():
 @app.route('/contactinfo/client', methods=['GET', 'POST'])
 def client_form():
     if request.method == 'POST':
-        # Dito natin hahawakan yung submitted data later
-        name = request.form['name']
-        email = request.form['email']
-        shoot_type = request.form['shoot_type']
-        date = request.form['date']
-        time = request.form['time']
-        location = request.form['location']
-        hours = request.form['hours']
-        permission = request.form['permission']
-        notes = request.form['notes']
+        data = {
+            'Name': request.form['name'],
+            'Email': request.form['email'],
+            'Shoot Type': request.form['shoot_type'],
+            'Date': request.form['date'],
+            'Time': request.form['time'],
+            'Location': request.form['location'],
+            'Hours': request.form['hours'],
+            'Permission to Post': request.form['permission'],
+            'Notes': request.form['notes']
+        }
 
-        # For now, simple print or redirect
-        print(f"New Client: {name}, {email}, {shoot_type}")
-
+        save_to_csv(data, 'data/client_submissions.csv')
         return render_template('thank_you.html')
 
+    # Pag GET request (pag open pa lang ng form)
     return render_template('client_form.html')
+
 
 
 @app.route('/contactinfo/model', methods=['GET', 'POST'])
 def model_form():
     if request.method == 'POST':
-        name = request.form['name']
         age = int(request.form['age'])
-        experience = request.form['experience']
-        permission = request.form['permission']
-        agree = request.form.get('agree')
-        availability = request.form['availability']
 
-        # Age check (basic handling for now)
+        # ✅ Check if under 18
         if age < 18:
             return render_template('underage.html')
 
-        if not agree:
-            return "<h2>You must agree to the terms to proceed.</h2>"
+        data = {
+            'Name': request.form['name'],
+            'Age': age,
+            'Experience': request.form['experience'],
+            'Permission to Post': request.form['permission'],
+            'Agreed to Terms': 'Yes',
+            'Availability': request.form['availability']
+        }
 
-        print(f"Model: {name}, Age: {age}, Experience: {experience}")
-
+        save_to_csv(data, 'data/model_submissions.csv')
         return render_template('thank_you.html')
 
     return render_template('model_form.html')
@@ -95,6 +116,7 @@ def events():
 @app.route('/portfolio/all')
 def all_portfolio():
     return render_template('all_portfolio.html')
+
 
 
 
