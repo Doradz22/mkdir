@@ -1,24 +1,39 @@
-from flask import Flask, render_template
-from flask import request
+from flask import Flask, render_template,request
 import csv
 import os
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 
 app = Flask(__name__)
 
+# Setup Google Sheets Connection Once
+scope = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive"
+]
+
+creds = ServiceAccountCredentials.from_json_keyfile_name('config/doradz-sheets-key.json', scope)
+client = gspread.authorize(creds)
+
+# Function to Save Data
+def save_to_google_sheets(data_list, sheet_id):
+    sheet = client.open_by_key(sheet_id).sheet1
+    sheet.append_row(data_list)
 
 
-
-
+# Function to Save to CSV
 def save_to_csv(data, filename):
-    file_exists = os.path.isfile(filename)
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, filename)
 
-    with open(filename, mode='a', newline='') as file:
+    file_exists = os.path.isfile(file_path)
+
+    with open(file_path, mode='a', newline='') as file:
         writer = csv.writer(file)
         if not file_exists:
-            writer.writerow(data.keys())  # Write header once
+            writer.writerow(data.keys())
         writer.writerow(data.values())
-
 
 
 
@@ -57,10 +72,15 @@ def client_form():
             'Notes': request.form['notes']
         }
 
+        # Save to CSV
         save_to_csv(data, 'data/client_submissions.csv')
+
+        # Convert to list for Google Sheets
+        data_list = list(data.values())
+        save_to_google_sheets(data_list, '1eed_gVpZ-5dYSZGoCCSk8ebr4fqZpYPRK-sgnj6Z8po')
+
         return render_template('thank_you.html')
 
-    # Pag GET request (pag open pa lang ng form)
     return render_template('client_form.html')
 
 
@@ -70,23 +90,29 @@ def model_form():
     if request.method == 'POST':
         age = int(request.form['age'])
 
-        # ✅ Check if under 18
         if age < 18:
             return render_template('underage.html')
 
         data = {
             'Name': request.form['name'],
-            'Age': age,
+            'Age': request.form['age'],
             'Experience': request.form['experience'],
             'Permission to Post': request.form['permission'],
             'Agreed to Terms': 'Yes',
             'Availability': request.form['availability']
         }
 
+        # Save to CSV
         save_to_csv(data, 'data/model_submissions.csv')
+
+        # Convert to list for Google Sheets
+        data_list = list(data.values())
+        save_to_google_sheets(data_list, '1HcRtwlGQ1SLmuFtB-K7K3gciDsHh5UoDCnjneO-7hQ4')
+
         return render_template('thank_you.html')
 
     return render_template('model_form.html')
+
 
 
 

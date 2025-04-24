@@ -1,0 +1,13 @@
+# .gitignore content
+
+# Virtual Environment
+.venv/
+
+# macOS system file
+.DS_Store
+
+# Config folder (JSON keys, etc.)
+config/
+
+# Optional: Ignore CSV files if ayaw mong i-track
+data/*.csv
