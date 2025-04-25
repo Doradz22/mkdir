@@ -161,7 +161,18 @@ body {
   
   .btn:hover {
     background-color: #f4f1ee;
+    color: #000;   /* Still dark on hover */
   }
+
+  
+  a.btn {
+    color: #1a1a1a !important;
+  }
+
+  a.btn:hover {
+    color: #000 !important;
+  }
+
 
 
   .contact-options {
@@ -235,3 +246,14 @@ body {
     color: #000;
   }
   
+  a:link, a:visited {
+    color: inherit;   /* Para kunin niya yung color ng parent (like nav) */
+    text-decoration: none;
+}
+
+  
+  a:hover {
+    color: #555;     /* Slightly lighter on hover */
+  }
+  
+

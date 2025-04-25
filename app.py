@@ -144,7 +144,15 @@ def all_portfolio():
     return render_template('all_portfolio.html')
 
 
+@app.route('/pricing')
+def pricing():
+    return render_template('pricing.html')
+
+
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+    
